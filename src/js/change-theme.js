@@ -10,22 +10,22 @@ const body = document.body;
 
 
 export const getLocalStorageTheme = () => {
-    if (localStorage.getItem('theme') === null || localStorage.getItem('theme') === 'LIGHT') {
-        body.classList = Theme.LIGHT;
-    } else {
+    if (localStorage.getItem('theme') === Theme.DARK) {
         body.classList = Theme.DARK;
         refSwitchThemeToggler.checked = true;
+    } else {
+        body.classList = Theme.LIGHT;
     }
 };
 
 function themeCheckBoxHandler(event) {
     // console.log(event.target.checked);
-    if (event.target.checked === false) {
-        body.classList = Theme.LIGHT;
-        localStorage.setItem('theme', 'LIGHT');
-    } else {
+    if (event.target.checked) {
         body.classList = Theme.DARK;
-        localStorage.setItem('theme', 'DARK');
+        localStorage.setItem('theme', Theme.DARK);
+    } else {
+        body.classList = Theme.LIGHT;
+        localStorage.setItem('theme', Theme.LIGHT);
     }
 }
 
